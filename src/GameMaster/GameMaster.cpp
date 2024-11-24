@@ -12,7 +12,8 @@
 
 GameMaster::GameMaster(Screen& screen):
     screen_ (screen),
-    objects_ () {}
+    objects_ (),
+    texture_storage_ () {}
 
 GameMaster::~GameMaster () {
 
@@ -72,19 +73,21 @@ void GameMaster::restart_game () {
 
 void GameMaster::create_scene () {
 
-    factory_ = new GameFactory (*this);
+    factory_ = new GameFactory (*this, texture_storage_);
 
     GameObject& collision_manager = factory_->create_collision_manager ();
     GameObject& main_camera       = factory_->create_main_camera ();
     GameObject& background_camera = factory_->create_background_camera ();
     GameObject& background = factory_->create_background ();
     GameObject& player     = factory_->create_player ();
-    GameObject& tube_gen   = factory_->create_tube_gen (player);
+    GameObject& tube_gen       = factory_->create_tube_gen       (player);
+    GameObject& tube_despawner = factory_->create_tube_despawner (player);
     GameObject& game_over  = factory_->create_game_over ();
     objects_.push_back (&collision_manager);
     objects_.push_back (&main_camera);
     objects_.push_back (&background_camera);
     objects_.push_back (&tube_gen);
+    objects_.push_back (&tube_despawner);
     objects_.push_back (&game_over);
     objects_.push_back (&player);
     background_ = &background;

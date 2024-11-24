@@ -165,6 +165,7 @@
     <ClInclude Include="src\Components\Rigidbody\Rigidbody.h" />
     <ClInclude Include="src\Components\TextureRenderer\TextureRenderer.h" />
     <ClInclude Include="src\Components\Transform\Transform.h" />
+    <ClInclude Include="src\Components\TubeDespawner\TubeDespawner.h" />
     <ClInclude Include="src\Components\TubeGenerator\TubeGenerator.h" />
     <ClInclude Include="src\Components\Tube\Tube.h" />
     <ClInclude Include="src\GameFactory\GameFactory.h" />
@@ -200,6 +201,7 @@
     <ClCompile Include="src\Components\Rigidbody\Rigidbody.cpp" />
     <ClCompile Include="src\Components\TextureRenderer\TextureRenderer.cpp" />
     <ClCompile Include="src\Components\Transform\Transform.cpp" />
+    <ClCompile Include="src\Components\TubeDespawner\TubeDespawner.cpp" />
     <ClCompile Include="src\Components\TubeGenerator\TubeGenerator.cpp" />
     <ClCompile Include="src\Components\Tube\Tube.cpp" />
     <ClCompile Include="src\GameFactory\GameFactory.cpp" />

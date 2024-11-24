@@ -6,6 +6,7 @@
 #include "src/Screen/Screen.h"
 #include "src/GameObject/GameObject.h"
 #include "src/GameFactory/GameFactory.h"
+#include "src/TextureStorage/TextureStorage.h"
 
 //--------------------------------------------------
 
@@ -25,8 +26,9 @@ class GameMaster {
   private:
     Screen& screen_;
     std::vector<GameObject*> objects_;
-    GameObject* background_;
-    GameFactory* factory_ = nullptr;
+    TextureStorage texture_storage_;
+    GameObject* background_ = nullptr;
+    GameFactory* factory_   = nullptr;
 
   private:
     void create_scene ();

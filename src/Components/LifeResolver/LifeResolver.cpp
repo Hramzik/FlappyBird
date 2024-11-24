@@ -14,7 +14,6 @@ bool LifeResolver::is_alive () {
 
 void LifeResolver::kill () {
 
-    std::cout << "DEAD" << "\n";
     is_alive_ = false;
 }
 

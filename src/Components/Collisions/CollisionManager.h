@@ -13,10 +13,10 @@
 class CollisionManager: public Component {
 
   public:
-    void add_collider (Collider& collider);
+    void observe (std::vector<GameObject*>& objects);
     void act (double dt) override;
 
   private:
-    std::vector<Collider*> colliders_;
+    std::vector<GameObject*>* objects_ = nullptr;
 };
 //--------------------------------------------------

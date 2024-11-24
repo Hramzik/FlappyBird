@@ -12,13 +12,14 @@
 class GameMaster;
 class LifeResolver;
 class CollisionManager;
+class TextureStorage;
 
 //--------------------------------------------------
 
 class GameFactory {
 
   public:
-    GameFactory (GameMaster& master);
+    GameFactory (GameMaster& master, TextureStorage& storage);
     void place_at_game_master (GameObject& object);
     GameObject& create_main_camera ();
     GameObject& create_background_camera ();
@@ -27,13 +28,15 @@ class GameFactory {
     GameObject& create_background ();
 
     GameObject& create_collision_manager ();
-    GameObject& create_tube_gen (GameObject& anker);
+    GameObject& create_tube_gen       (GameObject& anker);
+    GameObject& create_tube_despawner (GameObject& anker);
     GameObject& create_game_over ();
 
     GameObject& create_fps_counter ();
 
   private:
-    GameMaster& game_master_;
+    GameMaster&     game_master_;
+    TextureStorage& texture_storage_;
 
     CollisionManager* collision_manager_ = nullptr;
     Camera*     main_camera_       = nullptr;

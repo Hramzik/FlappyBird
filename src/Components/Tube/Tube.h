@@ -11,7 +11,4 @@ class Tube: public Component {
 
   public:
     
-
-  private:
-    
 };

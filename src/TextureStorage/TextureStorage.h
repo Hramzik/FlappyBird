@@ -15,7 +15,8 @@
 class TextureStorage {
 
   public:
-    TextureStorage ();
+    TextureStorage  ();
+    ~TextureStorage ();
     Texture& get_texture (const char* path);
 
   private:

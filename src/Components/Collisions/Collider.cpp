@@ -23,7 +23,7 @@ bool Collider::check_collision(const Collider& other) {
 
     if (!owner_ || !other.owner_) return false;
     Transform* my_tr =       owner_->get_component<Transform> ();
-    Transform* his_tr = other.owner_->get_component<Transform> ();
+     Transform* his_tr = other.owner_->get_component<Transform> ();
     if (!my_tr || !his_tr) return false;
 
     //--------------------------------------------------

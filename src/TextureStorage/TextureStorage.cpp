@@ -9,6 +9,13 @@
 TextureStorage::TextureStorage ():
         textures_ () {}
 
+TextureStorage::~TextureStorage () {
+
+    for (auto it = textures_.begin (); it != textures_.end (); ++it) {
+        delete it->second;
+    }
+}
+
 Texture& TextureStorage::get_texture (const char* path) {
 
     auto it = textures_.find (path);

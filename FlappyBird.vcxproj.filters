@@ -101,6 +101,9 @@
     <ClCompile Include="src\Components\BorderKillResolver\BorderKillResolver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Components\TubeDespawner\TubeDespawner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -197,6 +200,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Components\BorderKillResolver\BorderKillResolver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\TubeDespawner\TubeDespawner.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
