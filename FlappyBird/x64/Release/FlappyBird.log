@@ -1,0 +1,36 @@
+﻿  Engine.cpp
+  Game.cpp
+  Color.cpp
+  Camera.cpp
+  Collider.cpp
+  CollisionBox.cpp
+  CollisionManager.cpp
+  Component.cpp
+  FollowerLinker.cpp
+  FpsCounter.cpp
+  GameOverResolver.cpp
+  HitboxRenderer.cpp
+  LifeResolver.cpp
+  BorderKillResolver.cpp
+  PlayerCollider.cpp
+  PlayerController.cpp
+  Rigidbody.cpp
+  TextureRenderer.cpp
+  Transform.cpp
+  TubeGenerator.cpp
+  Компиляция...
+  Tube.cpp
+  GameFactory.cpp
+  GameMaster.cpp
+  GameObject.cpp
+  ImageLoader.cpp
+  RNG.cpp
+  Screen.cpp
+  TextureResizer.cpp
+  TextureStorage.cpp
+  Texture.cpp
+  Создание кода
+  Previous IPDB not found, fall back to full compilation.
+  All 1326 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Создание кода завершено
+  FlappyBird.vcxproj -> C:\Users\hramz_3vliuy6\Desktop\coding\6-flappy-bird\FlappyBird\FlappyBird.exe

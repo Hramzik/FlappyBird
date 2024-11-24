@@ -9,6 +9,9 @@
 
 //--------------------------------------------------
 
+GameOverResolver::GameOverResolver (GameMaster& master):
+        game_master_ (master) {}
+
 void GameOverResolver::observe (GameObject& player) {
 
     player_ = &player;
@@ -16,10 +19,23 @@ void GameOverResolver::observe (GameObject& player) {
 
 void GameOverResolver::act (double dt) {
 
+    if (!game_over_) try_end_game     ();
+    else             try_restart_game ();
+}
+
+void GameOverResolver::try_end_game () {
+
     if (!player_) return;
     LifeResolver* player_life = player_->get_component<LifeResolver> ();
     if (!player_life) return;
     if (player_life->is_alive ()) return;
+
+    //--------------------------------------------------
+
+    end_game ();
+}
+
+void GameOverResolver::end_game () {
 
     //--------------------------------------------------
     // freeze player
@@ -36,6 +52,26 @@ void GameOverResolver::act (double dt) {
     TextureRenderer* message = owner_->get_component<TextureRenderer> ();
     if (!message) return;
     message->activate ();
+
+    //--------------------------------------------------
+    // update flag
+
+    game_over_ = true;
+}
+
+void GameOverResolver::try_restart_game () {
+
+    if (!is_key_pressed (RESTART_GAME_KEY)) return;
+
+    //--------------------------------------------------
+
+    restart_game ();
+}
+
+void GameOverResolver::restart_game () {
+
+    game_master_.restart_game ();
+    game_over_ = false;
 }
 
 //--------------------------------------------------

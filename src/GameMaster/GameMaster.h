@@ -16,6 +16,7 @@ class GameMaster {
     ~GameMaster ();
     Screen&                   get_screen  ();
     std::vector<GameObject*>& get_objects ();
+    void restart_game ();
 
     void initialize ();
     void act (double dt);

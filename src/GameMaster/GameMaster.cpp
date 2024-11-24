@@ -33,7 +33,6 @@ std::vector<GameObject*>& GameMaster::get_objects () {
 
 void GameMaster::initialize () {
 
-    factory_ = new GameFactory (*this);
     create_scene ();
 }
 
@@ -65,7 +64,15 @@ void GameMaster::draw () {
 
 //--------------------------------------------------
 
+void GameMaster::restart_game () {
+
+    clear_scene ();
+    create_scene ();
+}
+
 void GameMaster::create_scene () {
+
+    factory_ = new GameFactory (*this);
 
     GameObject& collision_manager = factory_->create_collision_manager ();
     GameObject& main_camera       = factory_->create_main_camera ();
@@ -90,7 +97,12 @@ void GameMaster::create_scene () {
 
 void GameMaster::clear_scene () {
 
+    delete factory_;
     delete background_;
+    factory_    = nullptr;
+    background_ = nullptr;
+
+    //--------------------------------------------------
 
     for (int i = 0; i < (int) objects_.size (); ++i) {
 

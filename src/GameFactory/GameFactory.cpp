@@ -205,7 +205,7 @@ GameObject& GameFactory::create_game_over () {
     Component& renderer = *new TextureRenderer (texture, *background_camera_);
     renderer.deactivate ();
 
-    GameOverResolver& game_over = *new GameOverResolver ();
+    GameOverResolver& game_over = *new GameOverResolver (game_master_);
     game_over.observe (*player_);
 
     //--------------------------------------------------
