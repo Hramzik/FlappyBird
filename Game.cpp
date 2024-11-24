@@ -11,11 +11,12 @@
 //--------------------------------------------------
 
 GameMaster* game_master = nullptr;
+Screen*     screen      = nullptr;
 
 void initialize()
 {
-    Screen& screen = *new Screen (buffer);
-    game_master = new GameMaster (screen);
+    screen      = new Screen (buffer);
+    game_master = new GameMaster (*screen);
     game_master->initialize ();
 }
 
@@ -38,6 +39,7 @@ void draw()
 void finalize()
 {
     delete game_master;
+    delete screen;
 }
 
 //--------------------------------------------------

@@ -14,7 +14,8 @@ class Component;
 class GameObject {
 
   public:
-    GameObject ();
+    GameObject  ();
+    ~GameObject ();
 
     void act (double dt);
     void draw ();

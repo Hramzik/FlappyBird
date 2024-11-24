@@ -12,8 +12,12 @@
 
 GameMaster::GameMaster(Screen& screen):
     screen_ (screen),
-    objects_ (),
-    factory_ (*new GameFactory (*this)) {}
+    objects_ () {}
+
+GameMaster::~GameMaster () {
+
+    clear_scene ();
+}
 
 Screen& GameMaster::get_screen () {
 
@@ -29,25 +33,8 @@ std::vector<GameObject*>& GameMaster::get_objects () {
 
 void GameMaster::initialize () {
 
-    GameObject& collision_manager = factory_.create_collision_manager ();
-    GameObject& main_camera       = factory_.create_main_camera ();
-    GameObject& background_camera = factory_.create_background_camera ();
-    GameObject& background = factory_.create_background ();
-    GameObject& player     = factory_.create_player ();
-    GameObject& tube_gen   = factory_.create_tube_gen (player);
-    GameObject& game_over  = factory_.create_game_over ();
-    objects_.push_back (&collision_manager);
-    objects_.push_back (&main_camera);
-    objects_.push_back (&background_camera);
-    objects_.push_back (&tube_gen);
-    objects_.push_back (&game_over);
-    objects_.push_back (&player);
-    background_ = &background;
-
-    //--------------------------------------------------
-
-    GameObject& fps_counter = factory_.create_fps_counter ();
-    objects_.push_back (&fps_counter);
+    factory_ = new GameFactory (*this);
+    create_scene ();
 }
 
 void GameMaster::act (double dt) {
@@ -74,6 +61,43 @@ void GameMaster::draw () {
 
         objects_ [i]->draw ();
     }
+}
+
+//--------------------------------------------------
+
+void GameMaster::create_scene () {
+
+    GameObject& collision_manager = factory_->create_collision_manager ();
+    GameObject& main_camera       = factory_->create_main_camera ();
+    GameObject& background_camera = factory_->create_background_camera ();
+    GameObject& background = factory_->create_background ();
+    GameObject& player     = factory_->create_player ();
+    GameObject& tube_gen   = factory_->create_tube_gen (player);
+    GameObject& game_over  = factory_->create_game_over ();
+    objects_.push_back (&collision_manager);
+    objects_.push_back (&main_camera);
+    objects_.push_back (&background_camera);
+    objects_.push_back (&tube_gen);
+    objects_.push_back (&game_over);
+    objects_.push_back (&player);
+    background_ = &background;
+
+    //--------------------------------------------------
+
+    GameObject& fps_counter = factory_->create_fps_counter ();
+    objects_.push_back (&fps_counter);
+}
+
+void GameMaster::clear_scene () {
+
+    delete background_;
+
+    for (int i = 0; i < (int) objects_.size (); ++i) {
+
+        delete (objects_ [i]);
+    }
+
+    objects_.clear ();
 }
 
 //--------------------------------------------------

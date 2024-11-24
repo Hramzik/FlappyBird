@@ -12,7 +12,8 @@
 class GameMaster {
 
   public:
-    GameMaster(Screen& screen);
+    GameMaster  (Screen& screen);
+    ~GameMaster ();
     Screen&                   get_screen  ();
     std::vector<GameObject*>& get_objects ();
 
@@ -24,7 +25,11 @@ class GameMaster {
     Screen& screen_;
     std::vector<GameObject*> objects_;
     GameObject* background_;
-    GameFactory& factory_;
+    GameFactory* factory_ = nullptr;
+
+  private:
+    void create_scene ();
+    void clear_scene ();
 };
 
 //--------------------------------------------------

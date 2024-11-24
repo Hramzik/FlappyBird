@@ -11,6 +11,14 @@
 GameObject::GameObject ():
         components_ () {}
 
+GameObject::~GameObject () {
+
+    for (Component* comp : components_) {
+
+        delete comp;
+    }
+}
+
 void GameObject::act (double dt) {
 
     for (Component* comp : components_) {

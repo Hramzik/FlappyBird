@@ -133,17 +133,22 @@ static LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM l
   return 0;
 }
 
-#include <iostream>
+// УБРАТЬ НА РЕЛИЗЕ START
+// необходимо чтобы перенаправить stdout в консоль
+// #include <iostream>
+// УБРАТЬ НА РЕЛИЗЕ END
+
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
   _In_opt_ HINSTANCE hPrevInstance,
   _In_ LPWSTR    lpCmdLine,
   _In_ int       nCmdShow)
 {
-            // УБРАТЬ НА РЕЛИЗЕ
-            AllocConsole();
-            FILE* fDummy;
-            freopen_s(&fDummy, "CONOUT$", "w", stdout);
-            // WARNING УБРАТ НА РЕЛИЗЕ
+            // УБРАТЬ НА РЕЛИЗЕ START
+            // create console for debugging
+            //AllocConsole();
+            //FILE* fDummy;
+            //freopen_s(&fDummy, "CONOUT$", "w", stdout);
+            // УБРАТЬ НА РЕЛИЗЕ END
   SetProcessDPIAware();
   hinst = hInstance;
   UNREFERENCED_PARAMETER(hPrevInstance);
