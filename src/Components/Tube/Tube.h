@@ -9,6 +9,7 @@
 
 class Tube: public Component {
 
-  public:
-    
+    // blank
 };
+
+//--------------------------------------------------

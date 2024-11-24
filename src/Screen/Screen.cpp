@@ -12,7 +12,7 @@ Screen::Screen(Buffer& buffer):
 
 //--------------------------------------------------
 
-void Screen::render (Texture texture, Vector2<int> pos) {
+void Screen::render (Texture& texture, Vector2<int> pos) {
 
     int start_x = std::max(0, pos.x);
     int start_y = std::max(0, pos.y);

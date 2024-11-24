@@ -13,6 +13,7 @@ class TextureRenderer: public Component {
 
   public:
     TextureRenderer  (Texture& texture_, Camera& camera);
+    ~TextureRenderer () override;
     Texture& get_texture ();
     void draw () override;
 
@@ -20,3 +21,5 @@ class TextureRenderer: public Component {
     Texture& texture_;
     Camera&  camera_;
 };
+
+//--------------------------------------------------

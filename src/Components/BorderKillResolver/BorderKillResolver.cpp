@@ -10,7 +10,7 @@
 void BorderKillResolver::act (double dt) {
 
     if (!owner_) return;
-    Transform*        tr          = owner_->get_component<Transform> ();
+    Transform*        tr   = owner_->get_component<Transform> ();
     LifeResolver*     life = owner_->get_component<LifeResolver> ();
     if (!tr || !life) return;
 

@@ -34,7 +34,6 @@ GameFactory::GameFactory (GameMaster& master, TextureStorage& storage):
 void GameFactory::place_at_game_master (GameObject& object) {
 
     game_master_.get_objects ().push_back (&object);
-    std::cout << "placed at game master: " << game_master_.get_objects ().size () << " " << &object << "\n";
 }
 
 GameObject& GameFactory::create_main_camera () {
@@ -78,22 +77,17 @@ GameObject& GameFactory::create_player () {
     Component& rb         = *new RigidBody ({PlayerController::DEFAULT_SPEED, 0});
     Component& transform  = *new Transform (100);
 
-    Texture& texture = texture_storage_.get_texture("media/bird.png");
+    Texture& texture = texture_storage_.get_texture ("media/bird.png");
     TextureResizer::resize_texture(texture, {95, 70});
     Component& renderer = *new TextureRenderer (texture, *main_camera_);
 
-    if (!main_camera_obj_) throw std::logic_error("Create main camera before player");
+    if (!main_camera_obj_) throw std::logic_error ("Create main camera before player");
     FollowerLinker& camera_linker = *new FollowerLinker (*main_camera_obj_);
     camera_linker.set_follower_offset (-300);
     camera_linker.set_follow_y (false);
 
     PlayerCollider& collider = *new PlayerCollider ();
     collider.add_box (CollisionBox ({10, 10}, {75, 50}));
-
-    //Texture& hitbox_texture = texture_storage_.get_texture("media/hitbox.png");
-    //TextureResizer::resize_texture(hitbox_texture, {75, 50});
-    //HitboxRenderer& hitbox_renderer = *new HitboxRenderer (hitbox_texture, *main_camera_);
-    //hitbox_renderer.turn_off ();
 
     LifeResolver& player_life   = *new LifeResolver ();
     BorderKillResolver& player_killer = *new BorderKillResolver ();
@@ -107,7 +101,6 @@ GameObject& GameFactory::create_player () {
     player.add_component (renderer);
     player.add_component (camera_linker);
     player.add_component (collider);
-    //player.add_component (hitbox_renderer);
     player.add_component (player_life);
     player.add_component (player_killer);
 
@@ -132,10 +125,6 @@ GameObject& GameFactory::create_tube (Vector2<double> edge, bool is_bottom) {
     Collider& collider = *new Collider ();
     collider.add_box (CollisionBox ({20, 20}, {60, 460}));
 
-    //Texture& hitbox_texture = texture_storage_.get_texture("media/hitbox.png");
-    //TextureResizer::resize_texture(hitbox_texture, {60, 460});
-    //Component& hitbox_renderer = *new HitboxRenderer (hitbox_texture, *main_camera_);
-
     //--------------------------------------------------
 
     GameObject& tube = *new GameObject ();
@@ -143,7 +132,6 @@ GameObject& GameFactory::create_tube (Vector2<double> edge, bool is_bottom) {
     tube.add_component (transform);
     tube.add_component (renderer);
     tube.add_component (collider);
-    //tube.add_component (hitbox_renderer);
 
     return tube;
 }
@@ -153,7 +141,7 @@ GameObject& GameFactory::create_background () {
     Component& transform = *new Transform (0);
 
     Texture& texture = texture_storage_.get_texture("media/background.png");
-    TextureResizer::resize_texture(texture, {SCREEN_WIDTH, SCREEN_HEIGHT});
+    TextureResizer::resize_texture (texture, {SCREEN_WIDTH, SCREEN_HEIGHT});
     Component& renderer = *new TextureRenderer (texture, *background_camera_);
 
     //--------------------------------------------------
@@ -205,13 +193,13 @@ GameObject& GameFactory::create_tube_despawner (GameObject& anker) {
 
 GameObject& GameFactory::create_game_over () {
 
-    if (!player_) throw std::logic_error("Create player before game over");
+    if (!player_) throw std::logic_error ("Create player before game over");
 
     //--------------------------------------------------
 
     Component& transform = *new Transform ({SCREEN_WIDTH / 2 - 370, SCREEN_HEIGHT / 2 - 300});
 
-    Texture& texture = texture_storage_.get_texture("media/game_over.png");
+    Texture& texture = texture_storage_.get_texture ("media/game_over.png");
     TextureResizer::resize_texture(texture, {800, 600});
     Component& renderer = *new TextureRenderer (texture, *background_camera_);
     renderer.deactivate ();

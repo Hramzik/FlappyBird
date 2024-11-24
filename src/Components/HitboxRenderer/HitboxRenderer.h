@@ -17,3 +17,5 @@ class HitboxRenderer: public TextureRenderer {
   private:
     bool is_active_ = true;
 };
+
+//--------------------------------------------------

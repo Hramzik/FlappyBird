@@ -13,7 +13,7 @@ class Screen {
 
   public:
     Screen (Buffer& buffer);
-    void render (Texture texture, Vector2<int> pos);
+    void render (Texture& texture, Vector2<int> pos);
     void draw (Vector2<int> pixel, uint32_t color);
 
   private:

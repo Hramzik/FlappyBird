@@ -19,4 +19,5 @@ class CollisionManager: public Component {
   private:
     std::vector<GameObject*>* objects_ = nullptr;
 };
+
 //--------------------------------------------------

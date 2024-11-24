@@ -44,3 +44,5 @@ class GameFactory {
     GameObject* main_camera_obj_ = nullptr;
     GameObject* player_ = nullptr;
 };
+
+//--------------------------------------------------

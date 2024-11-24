@@ -15,7 +15,7 @@
 
 namespace Image_Loader {
 
-Texture& load_image(const std::string& filepath) {
+Texture load_image(const std::string& filepath) {
 
 
     int width, height, channel_count;
@@ -23,7 +23,6 @@ Texture& load_image(const std::string& filepath) {
 
     if (img == nullptr) {
         throw std::runtime_error ("Error while loading image");
-        return *new Texture ({0, 0}, {});
     }
 
     //--------------------------------------------------
@@ -36,7 +35,7 @@ Texture& load_image(const std::string& filepath) {
     //--------------------------------------------------
 
     stbi_image_free(img);
-    return *new Texture ({width, height}, pixels);
+    return Texture ({width, height}, pixels);
 }
 
 void ensure_alpha_channel_exists (std::vector<unsigned char>& pixels, int channel_count) {

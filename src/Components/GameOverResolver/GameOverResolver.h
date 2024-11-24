@@ -30,4 +30,5 @@ class GameOverResolver: public Component {
   private:
     static constexpr int RESTART_GAME_KEY = VK_SPACE;
 };
+
 //--------------------------------------------------

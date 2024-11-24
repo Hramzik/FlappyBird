@@ -83,6 +83,4 @@ std::pair<double, double> CollisionBox::project (const Vector2<double>& axis) co
     return std::make_pair(min_p, max_p);
 }
 
-
-
 //--------------------------------------------------

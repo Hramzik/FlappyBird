@@ -28,7 +28,7 @@ void CollisionManager::act (double dt) {
         if (!collider1->check_collision (*collider2)) continue;
         collider1->on_collision_enter (*collider2);
         // будет вызвано когда 1 и 2 свапнутся
-        //collider2->on_collision_enter (*collider1);
+        // collider2->on_collision_enter (*collider1);
     }
     }
 }

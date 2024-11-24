@@ -16,4 +16,5 @@ class LifeResolver: public Component {
   private:
     bool is_alive_ = true;
 };
+
 //--------------------------------------------------

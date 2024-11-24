@@ -10,6 +10,7 @@
 class Component {
 
   public:
+    virtual ~Component () = default;
     void set_owner (GameObject& owner);
     void activate   ();
     void deactivate ();
@@ -17,7 +18,7 @@ class Component {
     virtual void draw ();
 
   protected:
-    GameObject* owner_;
+    GameObject* owner_ = nullptr;
     bool is_active_ = true;
 };
 

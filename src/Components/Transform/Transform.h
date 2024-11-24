@@ -19,3 +19,5 @@ class Transform: public Component {
   private:
     Vector2<double> position_;
 };
+
+//--------------------------------------------------

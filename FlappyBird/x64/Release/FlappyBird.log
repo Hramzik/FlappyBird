@@ -1,19 +1,30 @@
 ﻿  Engine.cpp
   Game.cpp
+  Color.cpp
+  BorderKillResolver.cpp
   Camera.cpp
   Collider.cpp
+  CollisionBox.cpp
   CollisionManager.cpp
+  FollowerLinker.cpp
   GameOverResolver.cpp
   HitboxRenderer.cpp
   LifeResolver.cpp
+  PlayerCollider.cpp
+  PlayerController.cpp
+  Rigidbody.cpp
   TextureRenderer.cpp
+  Transform.cpp
   TubeDespawner.cpp
   TubeGenerator.cpp
+  Tube.cpp
+  Компиляция...
   GameFactory.cpp
   GameMaster.cpp
-  TextureStorage.cpp
+  TextureResizer.cpp
+  Texture.cpp
   Создание кода
   Compiler switch has changed, fall back to full compilation.
-  All 1411 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  All 1440 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Создание кода завершено
-  FlappyBird.vcxproj -> C:\Users\hramz_3vliuy6\Desktop\coding\6-flappy-bird\FlappyBird\FlappyBird.exe
+  FlappyBird.vcxproj -> C:\Users\hramz_3vliuy6\Desktop\coding\6-flappy-bird\FlappyBird2\FlappyBird.exe

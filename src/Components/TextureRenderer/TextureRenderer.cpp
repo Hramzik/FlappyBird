@@ -12,6 +12,11 @@ TextureRenderer::TextureRenderer (Texture& texture, Camera& camera):
     texture_ (texture),
     camera_  (camera) {}
 
+TextureRenderer::~TextureRenderer () {
+
+    delete &texture_;
+}
+
 Texture& TextureRenderer::get_texture () {
 
     return texture_;

@@ -23,3 +23,5 @@ class RigidBody: public Component {
   private:
     static constexpr double FREEFALL_ACCELERATION = 2200;
 };
+
+//--------------------------------------------------

@@ -17,3 +17,5 @@ class Camera: public Component {
   private:
     Screen& screen_;
 };
+
+//--------------------------------------------------
