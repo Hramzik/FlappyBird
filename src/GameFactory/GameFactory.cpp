@@ -6,13 +6,16 @@
 
 #include "GameFactory.h"
 #include "src/GameMaster/GameMaster.h"
-#include "src/Components/PlayerController/PlayerController.h"
+#include "src/Components/Player/PlayerController.h"
+#include "src/Components/Player/PlayerCollider.h"
 #include "src/Components/FollowerLinker/FollowerLinker.h"
 #include "src/Components/Tube/Tube.h"
 #include "src/Components/TubeGenerator/TubeGenerator.h"
+#include "src/Components/Collisions/CollisionManager.h"
 #include "src/Components/Rigidbody/Rigidbody.h"
 #include "src/Components/Transform/Transform.h"
 #include "src/Components/TextureRenderer/TextureRenderer.h"
+#include "src/Components/LifeResolver/LifeResolver.h"
 #include "src/Components/FpsCounter/FpsCounter.h"
 #include "src/ImageLoader/ImageLoader.h"
 #include "src/TextureResizer/TextureResizer.h"
@@ -78,6 +81,13 @@ GameObject& GameFactory::create_player () {
     camera_linker.set_follower_offset (-300);
     camera_linker.set_follow_y (false);
 
+    PlayerCollider& collider = *new PlayerCollider ();
+    collider.add_box (CollisionBox (0, 100));
+    collision_manager_->add_collider (collider);
+
+    LifeResolver& player_life = *new LifeResolver ();
+    player_life_ = &player_life;
+
     //--------------------------------------------------
 
     GameObject& player = *new GameObject ();
@@ -86,6 +96,8 @@ GameObject& GameFactory::create_player () {
     player.add_component (transform);
     player.add_component (renderer);
     player.add_component (camera_linker);
+    player.add_component (collider);
+    player.add_component (player_life);
 
     //--------------------------------------------------
 
@@ -104,14 +116,34 @@ GameObject& GameFactory::create_tube (Vector2<double> edge, bool is_bottom) {
     TextureResizer::resize_texture(texture, {100, 500});
     Component& renderer = *new TextureRenderer (texture, *main_camera_);
 
+    Collider& collider = *new Collider ();
+    collider.add_box (CollisionBox (0, {100, 500}));
+    collision_manager_->add_collider (collider);
+
     //--------------------------------------------------
 
     GameObject& tube = *new GameObject ();
     tube.add_component (tube_comp);
     tube.add_component (transform);
     tube.add_component (renderer);
+    tube.add_component (collider);
 
     return tube;
+}
+
+GameObject& GameFactory::create_collision_manager () {
+
+    CollisionManager& manager = *new CollisionManager ();
+
+    //--------------------------------------------------
+
+    GameObject& obj = *new GameObject ();
+    obj.add_component (manager);
+
+    //--------------------------------------------------
+
+    collision_manager_ = &manager;
+    return obj;
 }
 
 GameObject& GameFactory::create_tube_gen (GameObject& anker) {

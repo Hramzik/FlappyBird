@@ -29,11 +29,13 @@ std::vector<GameObject*>& GameMaster::get_objects () {
 
 void GameMaster::initialize () {
 
+    GameObject& collision_manager = factory_.create_collision_manager ();
     GameObject& main_camera       = factory_.create_main_camera ();
     GameObject& background_camera = factory_.create_background_camera ();
     GameObject& background = factory_.create_background ();
     GameObject& player     = factory_.create_player ();
     GameObject& tube_gen   = factory_.create_tube_gen (player);
+    objects_.push_back (&collision_manager);
     objects_.push_back (&main_camera);
     objects_.push_back (&background_camera);
     objects_.push_back (&background);
