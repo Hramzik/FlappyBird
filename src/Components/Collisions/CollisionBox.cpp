@@ -20,6 +20,11 @@ CollisionBox::CollisionBox (Vector2<double> offset, Vector2<double> size):
     vertex4_ = Vector2<double> (offset.x + size.x, offset.y + size.y);
 }
 
+Vector2<double> CollisionBox::get_offset () const {
+
+    return vertex1_;
+}
+
 CollisionBox CollisionBox::move (Vector2<double> movement) const {
 
     CollisionBox result;

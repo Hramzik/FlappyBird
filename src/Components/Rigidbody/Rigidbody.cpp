@@ -14,11 +14,12 @@ RigidBody::RigidBody (Vector2<double> velocity):
 
 void RigidBody::act (double dt) {
 
-    owner_->get_component<Transform> ()->move (velocity_ * dt);
+    if (!is_active_) return;
 
     //--------------------------------------------------
 
-    velocity_.y += g * dt;
+    owner_->get_component<Transform> ()->move (velocity_ * dt);
+    velocity_.y += FREEFALL_ACCELERATION * dt;
 }
 
 Vector2<double> RigidBody::get_velocity () {

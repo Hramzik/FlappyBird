@@ -21,8 +21,9 @@ void TubeGenerator::act (double dt) {
 
     double anker_x = anker_.get_component<Transform> ()->get_position ().x;
     double max_tube_x = get_max_tube_x ();
+    double start_x = std::max (max_tube_x + GENERATION_STEP, MIN_TUBE_X);
 
-    for (double x = max_tube_x + GENERATION_STEP; x < anker_x + GENERATION_RADIUS; x += GENERATION_STEP) {
+    for (double x = start_x; x < anker_x + GENERATION_RADIUS; x += GENERATION_STEP) {
 
         double top_tube_height = generate_tube_height ();
         double bot_tube_height = SCREEN_HEIGHT - top_tube_height - VERTICAL_GAP;

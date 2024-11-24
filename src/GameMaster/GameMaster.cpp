@@ -35,12 +35,14 @@ void GameMaster::initialize () {
     GameObject& background = factory_.create_background ();
     GameObject& player     = factory_.create_player ();
     GameObject& tube_gen   = factory_.create_tube_gen (player);
+    GameObject& game_over  = factory_.create_game_over ();
     objects_.push_back (&collision_manager);
     objects_.push_back (&main_camera);
     objects_.push_back (&background_camera);
-    objects_.push_back (&background);
-    objects_.push_back (&player);
     objects_.push_back (&tube_gen);
+    objects_.push_back (&game_over);
+    objects_.push_back (&player);
+    background_ = &background;
 
     //--------------------------------------------------
 
@@ -66,9 +68,11 @@ void GameMaster::act (double dt) {
 
 void GameMaster::draw () {
 
-    for (GameObject* object : objects_) {
+    if (background_) background_->draw ();
 
-        object->draw ();
+    for (int i = (int) objects_.size () - 1; i >= 0; --i) {
+
+        objects_ [i]->draw ();
     }
 }
 

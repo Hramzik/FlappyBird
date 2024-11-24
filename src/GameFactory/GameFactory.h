@@ -23,10 +23,12 @@ class GameFactory {
     GameObject& create_main_camera ();
     GameObject& create_background_camera ();
     GameObject& create_player ();
-    GameObject& create_collision_manager ();
-    GameObject& create_tube_gen (GameObject& anker);
     GameObject& create_tube (Vector2<double> edge, bool is_bottom);
     GameObject& create_background ();
+
+    GameObject& create_collision_manager ();
+    GameObject& create_tube_gen (GameObject& anker);
+    GameObject& create_game_over ();
 
     GameObject& create_fps_counter ();
 
@@ -37,5 +39,5 @@ class GameFactory {
     Camera*     main_camera_       = nullptr;
     Camera*     background_camera_ = nullptr;
     GameObject* main_camera_obj_ = nullptr;
-    LifeResolver* player_life_ = nullptr;
+    GameObject* player_ = nullptr;
 };

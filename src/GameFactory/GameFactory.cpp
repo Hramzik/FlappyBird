@@ -8,10 +8,13 @@
 #include "src/GameMaster/GameMaster.h"
 #include "src/Components/Player/PlayerController.h"
 #include "src/Components/Player/PlayerCollider.h"
+#include "src/Components/BorderKillResolver/BorderKillResolver.h"
 #include "src/Components/FollowerLinker/FollowerLinker.h"
 #include "src/Components/Tube/Tube.h"
 #include "src/Components/TubeGenerator/TubeGenerator.h"
 #include "src/Components/Collisions/CollisionManager.h"
+#include "src/Components/HitboxRenderer/HitboxRenderer.h"
+#include "src/Components/GameOverResolver/GameOverResolver.h"
 #include "src/Components/Rigidbody/Rigidbody.h"
 #include "src/Components/Transform/Transform.h"
 #include "src/Components/TextureRenderer/TextureRenderer.h"
@@ -82,11 +85,16 @@ GameObject& GameFactory::create_player () {
     camera_linker.set_follow_y (false);
 
     PlayerCollider& collider = *new PlayerCollider ();
-    collider.add_box (CollisionBox (0, 100));
+    collider.add_box (CollisionBox ({10, 10}, {75, 50}));
     collision_manager_->add_collider (collider);
 
-    LifeResolver& player_life = *new LifeResolver ();
-    player_life_ = &player_life;
+    Texture& hitbox_texture = Image_Loader::load_image("media/hitbox3.png");
+    TextureResizer::resize_texture(hitbox_texture, {75, 50});
+    HitboxRenderer& hitbox_renderer = *new HitboxRenderer (hitbox_texture, *main_camera_);
+    hitbox_renderer.turn_off ();
+
+    LifeResolver& player_life   = *new LifeResolver ();
+    BorderKillResolver& player_killer = *new BorderKillResolver ();
 
     //--------------------------------------------------
 
@@ -97,10 +105,13 @@ GameObject& GameFactory::create_player () {
     player.add_component (renderer);
     player.add_component (camera_linker);
     player.add_component (collider);
+    //player.add_component (hitbox_renderer);
     player.add_component (player_life);
+    player.add_component (player_killer);
 
     //--------------------------------------------------
 
+    player_ = &player;
     return player;
 }
 
@@ -117,8 +128,12 @@ GameObject& GameFactory::create_tube (Vector2<double> edge, bool is_bottom) {
     Component& renderer = *new TextureRenderer (texture, *main_camera_);
 
     Collider& collider = *new Collider ();
-    collider.add_box (CollisionBox (0, {100, 500}));
+    collider.add_box (CollisionBox ({20, 20}, {60, 460}));
     collision_manager_->add_collider (collider);
+
+    //Texture& hitbox_texture = Image_Loader::load_image("media/hitbox3.png");
+    //TextureResizer::resize_texture(hitbox_texture, {60, 460});
+    //Component& hitbox_renderer = *new HitboxRenderer (hitbox_texture, *main_camera_);
 
     //--------------------------------------------------
 
@@ -127,9 +142,31 @@ GameObject& GameFactory::create_tube (Vector2<double> edge, bool is_bottom) {
     tube.add_component (transform);
     tube.add_component (renderer);
     tube.add_component (collider);
+    //tube.add_component (hitbox_renderer);
 
     return tube;
 }
+
+GameObject& GameFactory::create_background () {
+
+    Component& transform = *new Transform (0);
+
+    Texture& texture = Image_Loader::load_image("media/background.png");
+    TextureResizer::resize_texture(texture, {SCREEN_WIDTH, SCREEN_HEIGHT});
+    Component& renderer = *new TextureRenderer (texture, *background_camera_);
+
+    //--------------------------------------------------
+
+    GameObject& background = *new GameObject ();
+    background.add_component (transform);
+    background.add_component (renderer);
+
+    //--------------------------------------------------
+
+    return background;
+}
+
+//--------------------------------------------------
 
 GameObject& GameFactory::create_collision_manager () {
 
@@ -155,23 +192,32 @@ GameObject& GameFactory::create_tube_gen (GameObject& anker) {
     return obj;
 }
 
-GameObject& GameFactory::create_background () {
+GameObject& GameFactory::create_game_over () {
 
-    Component& transform = *new Transform (0);
+    if (!player_) throw std::logic_error("Create player before game over");
 
-    Texture& texture = Image_Loader::load_image("media/background.png");
-    TextureResizer::resize_texture(texture, {SCREEN_WIDTH, SCREEN_HEIGHT});
+    //--------------------------------------------------
+
+    Component& transform = *new Transform ({SCREEN_WIDTH / 2 - 370, SCREEN_HEIGHT / 2 - 300});
+
+    Texture& texture = Image_Loader::load_image("media/game_over.png");
+    TextureResizer::resize_texture(texture, {800, 600});
     Component& renderer = *new TextureRenderer (texture, *background_camera_);
+    renderer.deactivate ();
+
+    GameOverResolver& game_over = *new GameOverResolver ();
+    game_over.observe (*player_);
 
     //--------------------------------------------------
 
-    GameObject& background = *new GameObject ();
-    background.add_component (transform);
-    background.add_component (renderer);
+    GameObject& obj = *new GameObject ();
+    obj.add_component (transform);
+    obj.add_component (renderer);
+    obj.add_component (game_over);
 
     //--------------------------------------------------
 
-    return background;
+    return obj;
 }
 
 //--------------------------------------------------

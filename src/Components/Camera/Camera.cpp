@@ -11,24 +11,17 @@
 Camera::Camera (Screen& screen):
         screen_ (screen) {}
 
-void Camera::render_view (GameObject& object) {
-
-    TextureRenderer* renderer  = object.get_component<TextureRenderer> ();
-    Transform*       transform = object.get_component<Transform> ();
-    if (!renderer || !transform) return;
-
-    //--------------------------------------------------
+void Camera::render_view (Vector2<double> object_pos, Texture& object_texture) {
 
     Vector2<double> camera_pos (0);
     if (owner_ && owner_->get_component<Transform> ()) camera_pos = owner_->get_component<Transform> ()->get_position ();
 
     //--------------------------------------------------
 
-    Vector2<double> object_pos   = transform->get_position ();
     Vector2<double> relative_pos = object_pos - camera_pos;
     Vector2<int> screen_pos ((int) relative_pos.x, (int) relative_pos.y);
 
-    screen_.render (renderer->get_texture (), screen_pos);
+    screen_.render (object_texture, screen_pos);
 }
 
 //--------------------------------------------------

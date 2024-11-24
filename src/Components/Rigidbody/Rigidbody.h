@@ -21,5 +21,5 @@ class RigidBody: public Component {
     Vector2<double> velocity_;
 
   private:
-    static constexpr double g = 2200;
+    static constexpr double FREEFALL_ACCELERATION = 2200;
 };

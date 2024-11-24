@@ -92,6 +92,15 @@
     <ClCompile Include="src\Components\LifeResolver\LifeResolver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Components\HitboxRenderer\HitboxRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\GameOverResolver\GameOverResolver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\BorderKillResolver\BorderKillResolver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -179,6 +188,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Components\LifeResolver\LifeResolver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\HitboxRenderer\HitboxRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\GameOverResolver\GameOverResolver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\BorderKillResolver\BorderKillResolver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -16,7 +16,7 @@ class TextureRenderer: public Component {
     Texture& get_texture ();
     void draw () override;
 
-  private:
+  protected:
     Texture& texture_;
     Camera&  camera_;
 };

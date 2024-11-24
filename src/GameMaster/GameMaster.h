@@ -23,6 +23,7 @@ class GameMaster {
   private:
     Screen& screen_;
     std::vector<GameObject*> objects_;
+    GameObject* background_;
     GameFactory& factory_;
 };
 

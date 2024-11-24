@@ -25,6 +25,7 @@ class TubeGenerator: public Component {
     static constexpr double GENERATION_RADIUS = 1100; // guaranteed to be filled
     static constexpr double GENERATION_STEP   = 350;
     static constexpr double VERTICAL_GAP      = 210;
+    static constexpr double MIN_TUBE_X        = 800;
     static constexpr double MIN_TUBE_HEIGHT   = 100;
 
   private:

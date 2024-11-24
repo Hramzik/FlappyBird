@@ -19,8 +19,14 @@ Texture& TextureRenderer::get_texture () {
 
 void TextureRenderer::draw () {
 
+    if (!is_active_) return;
     if (!owner_) return;
-    camera_.render_view (*owner_);
+    Transform* owner_tr = owner_->get_component<Transform> ();
+    if (!owner_tr) return;
+
+    //--------------------------------------------------
+
+    camera_.render_view (owner_tr->get_position (), texture_);
 }
 
 //--------------------------------------------------

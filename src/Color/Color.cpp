@@ -42,16 +42,21 @@ Color Color::blend_on (Color background) {
 
     //--------------------------------------------------
 
-    double src_alpha = a / 255;
-    double dst_alpha = background.a / 255;
+    double src_alpha = a / 255.0;
+    double dst_alpha = background.a / 255.0;
     double out_alpha = src_alpha + dst_alpha * (1 - src_alpha);
 
     double inv_out_alpha = 1 / out_alpha;
 
-    unsigned char blended_r = static_cast<unsigned char> ((r * src_alpha + background.r * dst_alpha * (1 - src_alpha)) * inv_out_alpha);
-    unsigned char blended_g = static_cast<unsigned char> ((g * src_alpha + background.g * dst_alpha * (1 - src_alpha)) * inv_out_alpha);
-    unsigned char blended_b = static_cast<unsigned char> ((b * src_alpha + background.b * dst_alpha * (1 - src_alpha)) * inv_out_alpha);
-    unsigned char blended_a = static_cast<unsigned char> (out_alpha * 255);
+    unsigned char blended_r = static_cast<unsigned char> ((r * src_alpha + background.r * (1 - src_alpha)));
+    unsigned char blended_g = static_cast<unsigned char> ((g * src_alpha + background.g * (1 - src_alpha)));
+    unsigned char blended_b = static_cast<unsigned char> ((b * src_alpha + background.b * (1 - src_alpha)));
+    unsigned char blended_a = static_cast<unsigned char> (255);
+
+    //unsigned char blended_r = static_cast<unsigned char> ((r * src_alpha + background.r * dst_alpha * (1 - src_alpha)) * inv_out_alpha);
+    //unsigned char blended_g = static_cast<unsigned char> ((g * src_alpha + background.g * dst_alpha * (1 - src_alpha)) * inv_out_alpha);
+    //unsigned char blended_b = static_cast<unsigned char> ((b * src_alpha + background.b * dst_alpha * (1 - src_alpha)) * inv_out_alpha);
+    //unsigned char blended_a = static_cast<unsigned char> (out_alpha * 255);
 
     return Color (blended_r, blended_g, blended_b, blended_a);
 }

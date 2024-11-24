@@ -9,6 +9,11 @@
 Collider::Collider ():
         boxes_ () {}
 
+std::vector<CollisionBox>& Collider::get_boxes () {
+
+    return boxes_;
+}
+
 void Collider::add_box (const CollisionBox& box) {
 
     boxes_.push_back (box);

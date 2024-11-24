@@ -153,7 +153,10 @@
     <ClInclude Include="src\Components\Component\Component.h" />
     <ClInclude Include="src\Components\FollowerLinker\FollowerLinker.h" />
     <ClInclude Include="src\Components\FpsCounter\FpsCounter.h" />
+    <ClInclude Include="src\Components\GameOverResolver\GameOverResolver.h" />
+    <ClInclude Include="src\Components\HitboxRenderer\HitboxRenderer.h" />
     <ClInclude Include="src\Components\LifeResolver\LifeResolver.h" />
+    <ClInclude Include="src\Components\BorderKillResolver\BorderKillResolver.h" />
     <ClInclude Include="src\Components\Player\PlayerCollider.h" />
     <ClInclude Include="src\Components\Player\PlayerController.h" />
     <ClInclude Include="src\Components\Rigidbody\Rigidbody.h" />
@@ -185,7 +188,10 @@
     <ClCompile Include="src\Components\Component\Component.cpp" />
     <ClCompile Include="src\Components\FollowerLinker\FollowerLinker.cpp" />
     <ClCompile Include="src\Components\FpsCounter\FpsCounter.cpp" />
+    <ClCompile Include="src\Components\GameOverResolver\GameOverResolver.cpp" />
+    <ClCompile Include="src\Components\HitboxRenderer\HitboxRenderer.cpp" />
     <ClCompile Include="src\Components\LifeResolver\LifeResolver.cpp" />
+    <ClCompile Include="src\Components\BorderKillResolver\BorderKillResolver.cpp" />
     <ClCompile Include="src\Components\Player\PlayerCollider.cpp" />
     <ClCompile Include="src\Components\Player\PlayerController.cpp" />
     <ClCompile Include="src\Components\Rigidbody\Rigidbody.cpp" />

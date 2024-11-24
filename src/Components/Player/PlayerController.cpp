@@ -8,6 +8,7 @@
 
 void PlayerController::act (double dt) {
 
+    if (!is_active_) return;
     if (!is_key_pressed (JUMP_KEY)) { allowed_to_jump_ = true; return; }
     if (!allowed_to_jump_) return;
 

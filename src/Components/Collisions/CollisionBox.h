@@ -9,11 +9,14 @@
 
 //--------------------------------------------------
 
+// изначально предполагалась возможность поворота
+// поэтому box хранит все 4 вершины
 class CollisionBox {
 
   public:
     CollisionBox ();
     CollisionBox (Vector2<double> offset, Vector2<double> size);
+    Vector2<double> get_offset () const;
     CollisionBox move (Vector2<double> movement) const;
     bool check_collision(const CollisionBox& other) const;
 
