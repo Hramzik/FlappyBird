@@ -21,7 +21,7 @@ class PlayerController: public Component {
     static constexpr double JUMP_SPEED = -550;
 
   public:
-    static constexpr double DEFAULT_SPEED = 100;
+    static constexpr double DEFAULT_SPEED = 300;
 };
 
 //--------------------------------------------------

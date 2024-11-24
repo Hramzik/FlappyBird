@@ -146,7 +146,10 @@
   <ItemGroup>
     <ClInclude Include="Engine.h" />
     <ClInclude Include="src\Color\Color.h" />
+    <ClInclude Include="src\Components\Camera\Camera.h" />
     <ClInclude Include="src\Components\Component\Component.h" />
+    <ClInclude Include="src\Components\FollowerLinker\FollowerLinker.h" />
+    <ClInclude Include="src\Components\FpsCounter\FpsCounter.h" />
     <ClInclude Include="src\Components\PlayerController\PlayerController.h" />
     <ClInclude Include="src\Components\Rigidbody\Rigidbody.h" />
     <ClInclude Include="src\Components\TextureRenderer\TextureRenderer.h" />
@@ -170,7 +173,10 @@
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="src\Color\Color.cpp" />
+    <ClCompile Include="src\Components\Camera\Camera.cpp" />
     <ClCompile Include="src\Components\Component\Component.cpp" />
+    <ClCompile Include="src\Components\FollowerLinker\FollowerLinker.cpp" />
+    <ClCompile Include="src\Components\FpsCounter\FpsCounter.cpp" />
     <ClCompile Include="src\Components\PlayerController\PlayerController.cpp" />
     <ClCompile Include="src\Components\Rigidbody\Rigidbody.cpp" />
     <ClCompile Include="src\Components\TextureRenderer\TextureRenderer.cpp" />

@@ -68,6 +68,15 @@
     <ClCompile Include="src\TextureStorage\TextureStorage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Components\Camera\Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\FollowerLinker\FollowerLinker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\FpsCounter\FpsCounter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -131,6 +140,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\TextureStorage\TextureStorage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\Camera\Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\FollowerLinker\FollowerLinker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\FpsCounter\FpsCounter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

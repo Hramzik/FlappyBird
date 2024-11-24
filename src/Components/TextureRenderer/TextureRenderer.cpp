@@ -8,9 +8,9 @@
 
 //--------------------------------------------------
 
-TextureRenderer::TextureRenderer (Texture& texture, Screen& screen):
+TextureRenderer::TextureRenderer (Texture& texture, Camera& camera):
     texture_ (texture),
-    screen_  (screen) {}
+    camera_  (camera) {}
 
 Texture& TextureRenderer::get_texture () {
 
@@ -19,10 +19,8 @@ Texture& TextureRenderer::get_texture () {
 
 void TextureRenderer::draw () {
 
-    Vector2<double> coords = owner_->get_component<Transform> ()->get_position ();
-    Vector2<int> pos ((int) coords.x, (int) coords.y);
-
-    screen_.render (texture_, pos);
+    if (!owner_) return;
+    camera_.render_view (*owner_);
 }
 
 //--------------------------------------------------

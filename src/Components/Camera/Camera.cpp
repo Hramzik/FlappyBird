@@ -14,13 +14,13 @@ Camera::Camera (Screen& screen):
 void Camera::render_view (GameObject& object) {
 
     TextureRenderer* renderer  = object.get_component<TextureRenderer> ();
-    TextureRenderer* transform = object.get_component<Transform> ();
+    Transform*       transform = object.get_component<Transform> ();
     if (!renderer || !transform) return;
 
     //--------------------------------------------------
 
     Vector2<double> camera_pos (0);
-    if (owner && owner_->get_component<Transform> ()) camera_pos = owner_->get_component<Transform> ()->get_position ();
+    if (owner_ && owner_->get_component<Transform> ()) camera_pos = owner_->get_component<Transform> ()->get_position ();
 
     //--------------------------------------------------
 

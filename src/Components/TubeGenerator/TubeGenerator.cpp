@@ -50,7 +50,6 @@ double TubeGenerator::generate_tube_height () {
     double min_height = MIN_TUBE_HEIGHT;
     double max_height = SCREEN_HEIGHT - MIN_TUBE_HEIGHT - VERTICAL_GAP;
     double height = RandomNumberGenerator::generate_between (min_height, max_height);
-    std::cout << min_height << " " << max_height << " " << height << "\n";
 
     return height;
 }

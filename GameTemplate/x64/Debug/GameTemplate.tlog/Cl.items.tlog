@@ -1,7 +1,10 @@
 C:\Users\hramz_3vliuy6\Desktop\coding\6-flappy-bird\GameTemplate\Engine.cpp;C:\Users\hramz_3vliuy6\Desktop\coding\6-flappy-bird\GameTemplate\GameTemplate\x64\Debug\Engine.obj
 C:\Users\hramz_3vliuy6\Desktop\coding\6-flappy-bird\GameTemplate\Game.cpp;C:\Users\hramz_3vliuy6\Desktop\coding\6-flappy-bird\GameTemplate\GameTemplate\x64\Debug\Game.obj
 C:\Users\hramz_3vliuy6\Desktop\coding\6-flappy-bird\GameTemplate\src\Color\Color.cpp;C:\Users\hramz_3vliuy6\Desktop\coding\6-flappy-bird\GameTemplate\GameTemplate\x64\Debug\Color.obj
+C:\Users\hramz_3vliuy6\Desktop\coding\6-flappy-bird\GameTemplate\src\Components\Camera\Camera.cpp;C:\Users\hramz_3vliuy6\Desktop\coding\6-flappy-bird\GameTemplate\GameTemplate\x64\Debug\Camera.obj
 C:\Users\hramz_3vliuy6\Desktop\coding\6-flappy-bird\GameTemplate\src\Components\Component\Component.cpp;C:\Users\hramz_3vliuy6\Desktop\coding\6-flappy-bird\GameTemplate\GameTemplate\x64\Debug\Component.obj
+C:\Users\hramz_3vliuy6\Desktop\coding\6-flappy-bird\GameTemplate\src\Components\FollowerLinker\FollowerLinker.cpp;C:\Users\hramz_3vliuy6\Desktop\coding\6-flappy-bird\GameTemplate\GameTemplate\x64\Debug\FollowerLinker.obj
+C:\Users\hramz_3vliuy6\Desktop\coding\6-flappy-bird\GameTemplate\src\Components\FpsCounter\FpsCounter.cpp;C:\Users\hramz_3vliuy6\Desktop\coding\6-flappy-bird\GameTemplate\GameTemplate\x64\Debug\FpsCounter.obj
 C:\Users\hramz_3vliuy6\Desktop\coding\6-flappy-bird\GameTemplate\src\Components\PlayerController\PlayerController.cpp;C:\Users\hramz_3vliuy6\Desktop\coding\6-flappy-bird\GameTemplate\GameTemplate\x64\Debug\PlayerController.obj
 C:\Users\hramz_3vliuy6\Desktop\coding\6-flappy-bird\GameTemplate\src\Components\Rigidbody\Rigidbody.cpp;C:\Users\hramz_3vliuy6\Desktop\coding\6-flappy-bird\GameTemplate\GameTemplate\x64\Debug\Rigidbody.obj
 C:\Users\hramz_3vliuy6\Desktop\coding\6-flappy-bird\GameTemplate\src\Components\TextureRenderer\TextureRenderer.cpp;C:\Users\hramz_3vliuy6\Desktop\coding\6-flappy-bird\GameTemplate\GameTemplate\x64\Debug\TextureRenderer.obj

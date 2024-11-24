@@ -2,15 +2,18 @@
 //--------------------------------------------------
 
 #include <iostream>
+#include <stdexcept>
 
 #include "GameFactory.h"
 #include "src/GameMaster/GameMaster.h"
 #include "src/Components/PlayerController/PlayerController.h"
+#include "src/Components/FollowerLinker/FollowerLinker.h"
 #include "src/Components/Tube/Tube.h"
 #include "src/Components/TubeGenerator/TubeGenerator.h"
 #include "src/Components/Rigidbody/Rigidbody.h"
 #include "src/Components/Transform/Transform.h"
 #include "src/Components/TextureRenderer/TextureRenderer.h"
+#include "src/Components/FpsCounter/FpsCounter.h"
 #include "src/ImageLoader/ImageLoader.h"
 #include "src/TextureResizer/TextureResizer.h"
 
@@ -22,6 +25,42 @@ GameFactory::GameFactory (GameMaster& master):
 void GameFactory::place_at_game_master (GameObject& object) {
 
     game_master_.get_objects ().push_back (&object);
+    //std::cout << "placed at game master: " << &object << "\n";
+}
+
+GameObject& GameFactory::create_main_camera () {
+
+    Component& transform = *new Transform (0);
+    Camera&    camera    = *new Camera (game_master_.get_screen ());
+
+    //--------------------------------------------------
+
+    GameObject& obj = *new GameObject ();
+    obj.add_component (transform);
+    obj.add_component (camera);
+
+    //--------------------------------------------------
+
+    main_camera_     = &camera;
+    main_camera_obj_ = &obj;
+    return obj;
+}
+
+GameObject& GameFactory::create_background_camera () {
+
+    Component& transform = *new Transform (0);
+    Camera&    camera    = *new Camera (game_master_.get_screen ());
+
+    //--------------------------------------------------
+
+    GameObject& obj = *new GameObject ();
+    obj.add_component (transform);
+    obj.add_component (camera);
+
+    //--------------------------------------------------
+
+    background_camera_ = &camera;
+    return obj;
 }
 
 GameObject& GameFactory::create_player () {
@@ -32,7 +71,12 @@ GameObject& GameFactory::create_player () {
 
     Texture& texture = Image_Loader::load_image("media/bird.png");
     TextureResizer::resize_texture(texture, {95, 70});
-    Component& renderer = *new TextureRenderer (texture, game_master_.get_screen ());
+    Component& renderer = *new TextureRenderer (texture, *main_camera_);
+
+    if (!main_camera_obj_) throw std::logic_error("Create main camera before player");
+    FollowerLinker& camera_linker = *new FollowerLinker (*main_camera_obj_);
+    camera_linker.set_follower_offset (-300);
+    camera_linker.set_follow_y (false);
 
     //--------------------------------------------------
 
@@ -41,6 +85,7 @@ GameObject& GameFactory::create_player () {
     player.add_component (rb);
     player.add_component (transform);
     player.add_component (renderer);
+    player.add_component (camera_linker);
 
     //--------------------------------------------------
 
@@ -57,7 +102,7 @@ GameObject& GameFactory::create_tube (Vector2<double> edge, bool is_bottom) {
     const char* img_path = is_bottom ? "media/tube-bottom.png" : "media/tube-top.png";
     Texture& texture = Image_Loader::load_image(img_path);
     TextureResizer::resize_texture(texture, {100, 500});
-    Component& renderer = *new TextureRenderer (texture, game_master_.get_screen ());
+    Component& renderer = *new TextureRenderer (texture, *main_camera_);
 
     //--------------------------------------------------
 
@@ -84,7 +129,7 @@ GameObject& GameFactory::create_background () {
 
     Texture& texture = Image_Loader::load_image("media/background.png");
     TextureResizer::resize_texture(texture, {SCREEN_WIDTH, SCREEN_HEIGHT});
-    Component& renderer = *new TextureRenderer (texture, game_master_.get_screen ());
+    Component& renderer = *new TextureRenderer (texture, *background_camera_);
 
     //--------------------------------------------------
 
@@ -95,6 +140,22 @@ GameObject& GameFactory::create_background () {
     //--------------------------------------------------
 
     return background;
+}
+
+//--------------------------------------------------
+
+GameObject& GameFactory::create_fps_counter () {
+
+    Component& counter = *new FpsCounter ();
+
+    //--------------------------------------------------
+
+    GameObject& obj = *new GameObject ();
+    obj.add_component (counter);
+
+    //--------------------------------------------------
+
+    return obj;
 }
 
 //--------------------------------------------------

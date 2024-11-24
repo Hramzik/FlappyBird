@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <stdexcept>
 #include <windows.h>
 
 #define STB_IMAGE_IMPLEMENTATION
@@ -16,13 +17,12 @@ namespace Image_Loader {
 
 Texture& load_image(const std::string& filepath) {
 
-    OutputDebugStringA("Texture loading started\n");
 
     int width, height, channel_count;
     unsigned char* img = stbi_load(filepath.c_str(), &width, &height, &channel_count, 0);
 
     if (img == nullptr) {
-        OutputDebugStringA("Error while loading image!\n");
+        throw std::runtime_error ("Error while loading image");
         return *new Texture ({0, 0}, {});
     }
 

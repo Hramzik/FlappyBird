@@ -22,7 +22,7 @@ class TubeGenerator: public Component {
     GameFactory& factory_;
 
   private:
-    static constexpr double GENERATION_RADIUS = 800; // guaranteed to be filled
+    static constexpr double GENERATION_RADIUS = 1100; // guaranteed to be filled
     static constexpr double GENERATION_STEP   = 350;
     static constexpr double VERTICAL_GAP      = 210;
     static constexpr double MIN_TUBE_HEIGHT   = 100;

@@ -13,6 +13,7 @@ class Transform: public Component {
   public:
     Transform (Vector2<double> position);
     Vector2<double> get_position ();
+    void            set_position (Vector2<double> pos);
     void move (Vector2<double> movement);
 
   private:
