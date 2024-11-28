@@ -11,7 +11,6 @@
 
 class GameMaster;
 class LifeResolver;
-class CollisionManager;
 class TextureStorage;
 
 //--------------------------------------------------
@@ -38,7 +37,6 @@ class GameFactory {
     GameMaster&     game_master_;
     TextureStorage& texture_storage_;
 
-    CollisionManager* collision_manager_ = nullptr;
     Camera*     main_camera_       = nullptr;
     Camera*     background_camera_ = nullptr;
     GameObject* main_camera_obj_ = nullptr;

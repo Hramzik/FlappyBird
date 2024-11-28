@@ -135,7 +135,7 @@ static LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM l
 
 // УБРАТЬ НА РЕЛИЗЕ START
 // необходимо чтобы перенаправить stdout в консоль
-// #include <iostream>
+//#include <iostream>
 // УБРАТЬ НА РЕЛИЗЕ END
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
@@ -145,9 +145,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 {
             // УБРАТЬ НА РЕЛИЗЕ START
             // create console for debugging
-            // AllocConsole();
-            // FILE* fDummy;
-            // freopen_s(&fDummy, "CONOUT$", "w", stdout);
+            //AllocConsole();
+            //FILE* fDummy;
+            //freopen_s(&fDummy, "CONOUT$", "w", stdout);
             // УБРАТЬ НА РЕЛИЗЕ END
   SetProcessDPIAware();
   hinst = hInstance;

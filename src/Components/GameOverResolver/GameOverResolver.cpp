@@ -38,6 +38,11 @@ void GameOverResolver::try_end_game () {
 void GameOverResolver::end_game () {
 
     //--------------------------------------------------
+    // update flag
+
+    game_over_ = true;
+
+    //--------------------------------------------------
     // freeze player
 
     PlayerController* player_controller = player_->get_component<PlayerController> ();
@@ -48,15 +53,9 @@ void GameOverResolver::end_game () {
     //--------------------------------------------------
     // show message
 
-    if (!owner_) return;
-    TextureRenderer* message = owner_->get_component<TextureRenderer> ();
-    if (!message) return;
-    message->activate ();
-
-    //--------------------------------------------------
-    // update flag
-
-    game_over_ = true;
+    TextureRenderer* message = nullptr;
+    if (owner_)  message = owner_->get_component<TextureRenderer> ();
+    if (message) message->activate ();
 }
 
 void GameOverResolver::try_restart_game () {

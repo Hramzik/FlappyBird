@@ -112,7 +112,7 @@ GameObject& GameFactory::create_player () {
 
 GameObject& GameFactory::create_tube (Vector2<double> edge, bool is_bottom) {
 
-    Component& tube_comp = *new Tube ();
+    Component& tube = *new Tube ();
 
     Vector2<double> pos = is_bottom ? edge : edge + Vector2<double> (0, -500);
     Component& transform = *new Transform (pos);
@@ -127,13 +127,13 @@ GameObject& GameFactory::create_tube (Vector2<double> edge, bool is_bottom) {
 
     //--------------------------------------------------
 
-    GameObject& tube = *new GameObject ();
-    tube.add_component (tube_comp);
-    tube.add_component (transform);
-    tube.add_component (renderer);
-    tube.add_component (collider);
+    GameObject& obj = *new GameObject ();
+    obj.add_component (tube);
+    obj.add_component (transform);
+    obj.add_component (renderer);
+    obj.add_component (collider);
 
-    return tube;
+    return obj;
 }
 
 GameObject& GameFactory::create_background () {
@@ -169,7 +169,6 @@ GameObject& GameFactory::create_collision_manager () {
 
     //--------------------------------------------------
 
-    collision_manager_ = &manager;
     return obj;
 }
 
@@ -185,8 +184,8 @@ GameObject& GameFactory::create_tube_gen (GameObject& anker) {
 GameObject& GameFactory::create_tube_despawner (GameObject& anker) {
 
     GameObject& obj = *new GameObject ();
-    Component& tube_gen = *new TubeDespawner (anker, game_master_.get_objects ());
-    obj.add_component (tube_gen);
+    Component& despawner = *new TubeDespawner (anker, game_master_.get_objects ());
+    obj.add_component (despawner);
 
     return obj;
 }

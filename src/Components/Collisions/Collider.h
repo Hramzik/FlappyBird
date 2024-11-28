@@ -14,6 +14,7 @@ class Collider: public Component {
 
   public:
     Collider ();
+    ~Collider () override = default;
     std::vector<CollisionBox>& get_boxes ();
     void                       add_box   (const CollisionBox& box);
     bool check_collision (const Collider& other);

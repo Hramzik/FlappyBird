@@ -1,2 +1,35 @@
-﻿  GameObject.cpp
-  FlappyBird.vcxproj -> C:\Users\hramz_3vliuy6\Desktop\coding\6-flappy-bird\FlappyBird\x64\Debug\FlappyBird.exe
+﻿  Engine.cpp
+  Game.cpp
+  Color.cpp
+  Camera.cpp
+  Collider.cpp
+  CollisionBox.cpp
+  CollisionManager.cpp
+  Component.cpp
+  FollowerLinker.cpp
+  FpsCounter.cpp
+  GameOverResolver.cpp
+  HitboxRenderer.cpp
+  LifeResolver.cpp
+  BorderKillResolver.cpp
+  PlayerCollider.cpp
+  PlayerController.cpp
+  Rigidbody.cpp
+  TextureRenderer.cpp
+  Transform.cpp
+  TubeDespawner.cpp
+  Создание кода...
+  Компиляция...
+  TubeGenerator.cpp
+  Tube.cpp
+  GameFactory.cpp
+  GameMaster.cpp
+  GameObject.cpp
+  ImageLoader.cpp
+  RNG.cpp
+  Screen.cpp
+  TextureResizer.cpp
+  TextureStorage.cpp
+  Texture.cpp
+  Создание кода...
+  FlappyBird.vcxproj -> C:\Users\hramz_3vliuy6\Desktop\coding\6-flappy-bird\FlappyBird2\x64\Debug\FlappyBird.exe

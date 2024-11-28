@@ -94,8 +94,8 @@ void GameMaster::create_scene () {
 
     //--------------------------------------------------
 
-    GameObject& fps_counter = factory_->create_fps_counter ();
-    objects_.push_back (&fps_counter);
+    //GameObject& fps_counter = factory_->create_fps_counter ();
+    //objects_.push_back (&fps_counter);
 }
 
 void GameMaster::clear_scene () {

@@ -15,6 +15,7 @@ class GameObject {
 
   public:
     GameObject  ();
+    ~GameObject ();
 
     void act (double dt);
     void draw ();
